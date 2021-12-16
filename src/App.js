@@ -5,7 +5,7 @@ const App = () => {
 
   const[tasks, setTasks] = useState([
     {
-        id: 1,
+        id: 1,  
         text: 'Morning Meditation',
         day: 'December 14th at 8:30am',
         reminder: true,
@@ -29,16 +29,22 @@ const App = () => {
         reminder: true,
     },
 ])
+
 // Delete Task
  const deleteTask = (id) => {
   // console.log('delete', id)
   setTasks(tasks.filter((task) => task.id !== id))
  }
 
+ // Toggle Reminder
+ const toggleReminder = (id) => {
+   console.log(id)
+ }
+
   return (
     <div className="container ">
       <Header  />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}  />) : ( 'No Tasks to show')}
     </div>
   ); 
 }
